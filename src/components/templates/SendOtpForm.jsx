@@ -8,8 +8,8 @@ function SendOtpForm({setStep , setMobile , mobile}) {
     if(mobile.length !== 11) return
 
     const {response, error} = await sendOtp(mobile)
-    if(response) setStep(2)
-    if(error) console.log(error)
+    if(response)setStep(2)
+    if(error)console.log(error)
   }
   return (
     <form onSubmit={submitHandler}>
