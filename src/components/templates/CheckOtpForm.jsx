@@ -6,8 +6,8 @@ function CheckOtpForm({setStep,code,setCode,mobile}) {
 
   const submitHandler = async (event) => {
     event.preventDefault()
-    
-    if(code.lenght !==5) return;
+    if(code.length !==5 ) return;
+
     const {response,error} =await checkOtp(mobile,code);
     if(response){
       setCookie(response.data)
