@@ -12,6 +12,7 @@ import NotFoundPage from "../pages/404Page"
 function Router() {
   const {data,isLoading,error} = useQuery(["profile"], getProfile)
   if (isLoading) return <h1>Loading...</h1>
+  
   return (
     <Routes>
     <Route path="/" element={<HomePage/>}/>
