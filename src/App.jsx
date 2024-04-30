@@ -3,13 +3,16 @@ import Router from "./router/Router";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import defaultOptions from "./configs/reactQuery";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import Layout from "./layouts/Layout";
 
 const queryClient = new QueryClient({defaultOptions});
 function App() {
   return(
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
-       <Router/>
+        <Layout>
+          <Router/> 
+        </Layout>
       </QueryClientProvider>
       <ReactQueryDevtools initialIsOpen={false} />
     </BrowserRouter>
