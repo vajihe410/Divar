@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
+import axios from 'axios'
+
 import { getCategory } from '../../services/admin'
+import { getCookie } from '../../utils/cookie'
 //styles
 import styles from "./AddPost.module.css"
 
@@ -25,6 +28,17 @@ function AddPost() {
     }
     const clickHandler = (event) => {
         event.preventDefault()
+        const formData = new FormData()
+        for(let i in form){
+            formData.append(i,form[i])
+        }
+        const token = getCookie("accessToken")
+        axios.post(`${import.meta.env.VITE_BASE_URL}post/create`,formData,{
+            headers:{
+                "Content-Type":"multipart/form-data",
+                Authorization:`bearer ${token}`
+            }
+        }).then(response => console.log(response)).catch(error => console.log(error))
     }
   return (
     <form onChange={changeHandler} className={styles.form}>
