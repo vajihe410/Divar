@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
+import toast from 'react-hot-toast'
 
 import { getCategory } from '../../services/admin'
 import { getCookie } from '../../utils/cookie'
@@ -38,7 +39,7 @@ function AddPost() {
                 "Content-Type":"multipart/form-data",
                 Authorization:`bearer ${token}`
             }
-        }).then(response => console.log(response)).catch(error => console.log(error))
+        }).then(response => toast.success(response.data.message)).catch(error => toast.error("مشکلی پیش امده است"))
     }
   return (
     <form onChange={changeHandler} className={styles.form}>
