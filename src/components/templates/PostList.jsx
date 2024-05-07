@@ -1,6 +1,8 @@
 import React from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { getPosts } from '../../services/user'
+//functions
+import { sp } from '../../utils/number'
 //components
 import Loader from "../modules/Loader"
 
@@ -20,8 +22,8 @@ function PostList() {
                 <span>{post.options.content}</span>
               </div>
               <div>
-                <p>{post.createdAt}</p>
-                <span>{post.amount}تومان</span>
+                <p>{new Date(post.createdAt).toLocaleDateString("fa-IR")}</p>
+                <span>{sp(post.amount)}تومان</span>
               </div>
             </div>
           ))}
