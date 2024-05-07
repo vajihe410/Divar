@@ -15,12 +15,12 @@ function AddPost() {
         amount:null,
         city:"",
         category:"",
-        image:null
+        images:null
     })
     const {data} = useQuery(["get_categories"],getCategory)
     const changeHandler = (event) => {
         const name = event.target.name
-        if(name !== "image"){
+        if(name !== "images"){
             setForm({...form,[name]:event.target.value})
         }
         else{
@@ -58,8 +58,8 @@ function AddPost() {
                 data?.data.map(item => <option key={item._id} value={item._id}>{item.namr}</option>)
             }
         </select>
-        <label htmlFor='image'>عکس</label>
-        <input type="file" name='image' id='image' />
+        <label htmlFor='images'>عکس</label>
+        <input type="file" name='images' id='images' />
         <button onClick={clickHandler}>ایجاد</button>
     </form>
   )
